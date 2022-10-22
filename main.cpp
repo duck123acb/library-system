@@ -1,4 +1,4 @@
-// TODO: make an adding book system, make a search system by name and genre/type. could maybe make an id randomiser, and im probably not gonna make a gui myself (but feel free to make it yourself!).
+// TODO: make a search system by name and genre/type. could maybe make an id randomiser, and im probably not gonna make a gui myself (but feel free to make it yourself!).
 
 #include <iostream>
 #include <fstream>
@@ -8,11 +8,41 @@
 #include "Book.hpp"
 
 std::vector<Book> books;
+std::string booksFileName = "books.txt";
+
+std::string askInput(std::string question)
+{
+	std::cout << question << "\n";
+	std::string ans;
+	getline(std::cin, ans);
+	return ans;
+}
+
+int getRandomId()
+{
+
+}
+
+void createBook()
+{
+	std::string name, id, author, pages, type, writeString;
+	
+	name = askInput("What is the Name of the book you want to add?");
+	id = askInput("What is the Id of the book you want to add?");
+	author = askInput("What is the Author of the book you want to add?");
+	pages = askInput("What is the number of Pages of the book you want to add?");
+	type = askInput("What are the genres of the book you want to add? (e.g.: Science-Fiction, Novel)");
+
+	writeString = "\n" + name + "-" + id + "-" + author + "-" + pages + "-" + type;
+	std::ofstream booksFile(booksFileName, std::fstream::app);
+	booksFile << writeString;
+	booksFile.close();
+}
 
 void loadBooks()
 {
 	std::fstream booksFile;
-	booksFile.open("books.txt");
+	booksFile.open(booksFileName);
 	for (std::string line; getline(booksFile, line);)
 	{
 		std::stringstream ssin(line);
@@ -66,10 +96,12 @@ void getSpecificBook(int i)
 
 int main()
 {
-	loadBooks();
+	// loadBooks();
 
-	listAllBooks();
-	getSpecificBook(1);
+	// listAllBooks();
+	// getSpecificBook(1);
+
+	createBook();
 
 	return 0;
 }

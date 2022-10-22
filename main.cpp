@@ -49,14 +49,25 @@ void loadBooks()
 	booksFile.close();
 }
 
-int main()
+void listAllBooks()
 {
-	loadBooks();
-
 	for (int i = 0; i < books.size(); i++)
 	{
 		std::cout << books[i].getProperties() << "\n";
 	}
+}
+
+void getSpecificBook(int i)
+{
+	std::cout << books[i].getProperties() << "\n";
+}
+
+int main()
+{
+	loadBooks();
+
+	listAllBooks();
+	getSpecificBook(1);
 
 	return 0;
 }

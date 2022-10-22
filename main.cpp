@@ -16,7 +16,8 @@ void loadBooks()
 		std::stringstream ssin(line);
 		std::string name, id, author, pages, type;
 		int i = 0;
-		for (std::string segment; std::getline(ssin, segment, '-');)
+		char splitChar = '^';
+		for (std::string segment; std::getline(ssin, segment, '^');)
 		{
 			switch (i)
 			{
@@ -43,8 +44,7 @@ void loadBooks()
 			i++;
 		}
 
-		std::cout << name << " " <<  id << " " << author << " " << pages << " " << type << "\n";
-		// books.push_back(Book(name, std::stoi(id), author, std::stoi(pages), type));
+		books.push_back(Book(name, std::stoi(id), author, std::stoi(pages), type));
 	}
 	booksFile.close();
 }

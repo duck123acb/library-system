@@ -18,6 +18,6 @@ public:
 
 	std::string getProperties()
 	{
-		return name + " " + std::to_string(id) + " " + author + " " + std::to_string(pages) + " " + type;
+		return name + " || " + std::to_string(id) + " || " + author + " || " + std::to_string(pages) + " || " + type;
 	}
 };

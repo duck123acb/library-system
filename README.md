@@ -1,7 +1,6 @@
 # Duck Library
 
-A small little library system, thats it. 
-
+A small little library system, thats it. <br>
 I made this to test my c++ skilzz :sunglasses:
 
 ## TODO

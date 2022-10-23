@@ -138,10 +138,10 @@ int main()
     srand(time(nullptr));
 	loadBooks();
 	// randomizeIds();
-	// writeBookFile();
-	// listAllBooks();
-	createBook();
+	writeBookFile();
 	listAllBooks();
+	// createBook();
+	// listAllBooks();
 
 	return 0;
 }

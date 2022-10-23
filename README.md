@@ -6,5 +6,4 @@ also im was bored :sob:
 
 ## TODO
 - make a search system by name and genre/type
-- could maybe make an id randomiser
 - and im probably not gonna make a gui myself (but feel free to make it yourself!).

@@ -7,9 +7,11 @@
 #include <random>
 #include "Book.hpp"
 
+// global vars
 std::vector<Book> books;
 char splitChar = '^';
 
+// INPUT FUNCTIONS
 std::string askInput(std::string question)
 {
 	std::cout << question << "\n";
@@ -18,12 +20,14 @@ std::string askInput(std::string question)
 	return ans;
 }
 
+
+// ID FUNCTIONS
 int getRandomId()
 {
 	int maxRandNum = 100000;
 	int num = rand() % maxRandNum;
 
-	for (int i = 0; i < books.size(); i++)
+	for (int i = 0; i < books.size(); i++) // make sure that the id is unique
 	{
 		if (books[i].id == num)
 		{
@@ -34,6 +38,16 @@ int getRandomId()
 	return num;
 }
 
+void randomizeAllIds()
+{
+	for (int i = 0; i < books.size(); i++)
+	{
+		books[i].id = getRandomId();
+	}
+}
+
+
+// BOOK FILE MANAGEMENT
 void loadBooks()
 {
 	std::fstream booksFile;
@@ -110,6 +124,8 @@ void createBook()
 	loadBooks();
 }
 
+
+// PRINTING BOOKS TO CONSOLE FUNCTIONS
 void listAllBooks()
 {
 	for (int i = 0; i < books.size(); i++)
@@ -123,14 +139,8 @@ void getSpecificBookFromList(int i)
 	std::cout << books[i].getProperties() << "\n";
 }
 
-void randomizeIds()
-{
-	for (int i = 0; i < books.size(); i++)
-	{
-		books[i].id = getRandomId();
-	}
-}
 
+// SEARCHING FUNCTIONS
 void searchBookName(std::string search)
 {
 	for (int i = 0; i < books.size(); i++)
@@ -158,18 +168,25 @@ void searchBookType(std::string search)
 	}
 }
 
+
 int main()
 {
     srand(time(nullptr));
-	loadBooks();
-	// randomizeIds();
-	// writeBookFile();
-	// createBook();
-	// searchBookName("Dan");
-	// searchBookAuthor("Lo");
-	// searchBookType("Novel");
-	// getSpecificBookFromList(books.size() - 1);
-	// listAllBooks();
+
+	/**
+	 * MAIN FUNCTIONS
+	 * loadBooks();
+	 * randomizeAllIds();
+	 * writeBookFile();
+	 * createBook();
+	 * searchBookName("Dan");
+	 * searchBookAuthor("Lo");
+	 * searchBookType("Novel");
+	 * getSpecificBookFromList(books.size() - 1);
+	 * listAllBooks();
+	**/
+	
+
 
 	return 0;
 }

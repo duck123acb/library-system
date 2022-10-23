@@ -11,10 +11,10 @@ A book in the books.txt file would look like this: Title^Id^Author^Pages^Genres 
 Example: Danush Ramanan, The entire story^83730^Danush Ramanan^20^Autobiography <br>
 The values are separated with a '^' because i don't many people have a ^ in a title of a book <br>
 <br>
-<br>
 
 ### Book.hpp
 The Book.hpp has the Book class.
+<br>
 
 ### main.cpp
 The functions that this file contains are: <br>
@@ -29,6 +29,7 @@ The functions that this file contains are: <br>
 - searchBookTitle("Dan");
 - searchBookAuthor("Lo");
 - searchBookGenre("Novel");
+<br>
 
 ## comple and run
 

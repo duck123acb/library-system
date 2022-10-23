@@ -55,14 +55,14 @@ void loadBooks()
 	for (std::string line; getline(booksFile, line);)
 	{
 		std::stringstream ssin(line);
-		std::string name, id, author, pages, type;
+		std::string title, id, author, pages, genre;
 		int i = 0;
 		for (std::string segment; std::getline(ssin, segment, '^');)
 		{
 			switch (i)
 			{
 			case 0:
-				name = segment;
+				title = segment;
 				break;
 			case 1:
 				id = segment;
@@ -74,7 +74,7 @@ void loadBooks()
 				pages = segment;
 				break;
 			case 4:
-				type = segment;
+				genre = segment;
 				break;
 			
 			default:
@@ -84,14 +84,14 @@ void loadBooks()
 			i++;
 		}
 
-		books.push_back(Book(name, std::stoi(id), author, std::stoi(pages), type));
+		books.push_back(Book(title, std::stoi(id), author, std::stoi(pages), genre));
 	}
 	booksFile.close();
 }
 
 void writeBookFile()
 {
-	std::string bookMsg = books[0].name + splitChar + std::to_string(books[0].id) + splitChar + books[0].author + splitChar + std::to_string(books[0].pages) + splitChar + books[0].type;
+	std::string bookMsg = books[0].title + splitChar + std::to_string(books[0].id) + splitChar + books[0].author + splitChar + std::to_string(books[0].pages) + splitChar + books[0].genre;
 	std::ofstream booksFile("books.txt");
 	booksFile << bookMsg;
 	booksFile.close();
@@ -99,7 +99,7 @@ void writeBookFile()
 	std::ofstream booksFileAdditive("books.txt", std::fstream::app);
 	for (int i = 1; i < books.size(); i++)
 	{
-		bookMsg = "\n" + books[i].name + splitChar + std::to_string(books[i].id) + splitChar + books[i].author + splitChar + std::to_string(books[i].pages) + splitChar + books[i].type;
+		bookMsg = "\n" + books[i].title + splitChar + std::to_string(books[i].id) + splitChar + books[i].author + splitChar + std::to_string(books[i].pages) + splitChar + books[i].genre;
 		booksFileAdditive << bookMsg;
 	}
 	booksFileAdditive.close();
@@ -108,15 +108,15 @@ void writeBookFile()
 
 void createBook()
 {
-	std::string name, id, author, pages, type, writeString;
+	std::string title, id, author, pages, genre, writeString;
 	
-	name = askInput("What is the Name of the book you want to add?");
+	title = askInput("What is the Title of the book you want to add?");
 	id = std::to_string(getRandomId());
 	author = askInput("What is the Author of the book you want to add?");
-	pages = askInput("What is the number of Pages of the book you want to add?");
-	type = askInput("What are the genres of the book you want to add? (e.g.: Science-Fiction, Novel)");
+	pages = askInput("What is the Number of Pages of the book you want to add?");
+	genre = askInput("What are the Genres of the book you want to add? (e.g.: Science-Fiction, Novel)");
 
-	writeString = "\n" + name + splitChar + id + splitChar + author + splitChar + pages + splitChar + type;
+	writeString = "\n" + title + splitChar + id + splitChar + author + splitChar + pages + splitChar + genre;
 	std::ofstream booksFile("books.txt", std::fstream::app);
 	booksFile << writeString;
 	booksFile.close();
@@ -141,12 +141,12 @@ void getSpecificBookFromList(int i)
 
 
 // SEARCHING FUNCTIONS
-void searchBookName(std::string search)
+void searchBookTitle(std::string search)
 {
 	for (int i = 0; i < books.size(); i++)
 	{
-		if (books[i].name.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
-		else std::cout << "No books found with that Name\n";
+		if (books[i].title.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
+		else std::cout << "No books found with that Title\n";
 	}
 }
 
@@ -159,12 +159,12 @@ void searchBookAuthor(std::string search)
 	}
 }
 
-void searchBookType(std::string search)
+void searchBookGenre(std::string search)
 {
 	for (int i = 0; i < books.size(); i++)
 	{
-		if (books[i].type.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
-		else std::cout << "No books found with that/those Type\n";
+		if (books[i].genre.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
+		else std::cout << "No books found with that/those Genre\n";
 	}
 }
 
@@ -179,9 +179,9 @@ int main()
 	 * randomizeAllIds();
 	 * writeBookFile();
 	 * createBook();
-	 * searchBookName("Dan");
+	 * searchBookTitle("Dan");
 	 * searchBookAuthor("Lo");
-	 * searchBookType("Novel");
+	 * searchBookGenre("Novel");
 	 * getSpecificBookFromList(books.size() - 1);
 	 * listAllBooks();
 	**/

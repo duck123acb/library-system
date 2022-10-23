@@ -120,7 +120,7 @@ void listAllBooks()
 	}
 }
 
-void getSpecificBook(int i)
+void getSpecificBookFromList(int i)
 {
 	std::cout << books[i].getProperties() << "\n";
 }
@@ -133,14 +133,34 @@ void randomizeIds()
 	}
 }
 
+void searchBookName(std::string search)
+{
+	for (int i = 0; i < books.size(); i++)
+	{
+		if (books[i].name.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
+		else std::cout << "No books found with that Name\n";
+	}
+}
+
+void searchBookAuthor(std::string search)
+{
+	for (int i = 0; i < books.size(); i++)
+	{
+		if (books[i].author.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
+		else std::cout << "No books found with that Author\n";
+	}
+}
+
 int main()
 {
     srand(time(nullptr));
 	loadBooks();
 	// randomizeIds();
-	writeBookFile();
-	listAllBooks();
+	// writeBookFile();
 	// createBook();
+	// searchBookName("Dan");
+	// searchBookAuthor("Lo");
+	// getSpecificBookFromList(books.size() - 1);
 	// listAllBooks();
 
 	return 0;

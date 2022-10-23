@@ -151,6 +151,15 @@ void searchBookAuthor(std::string search)
 	}
 }
 
+void searchBookType(std::string search)
+{
+	for (int i = 0; i < books.size(); i++)
+	{
+		if (books[i].type.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
+		else std::cout << "No books found with that/those Type\n";
+	}
+}
+
 int main()
 {
     srand(time(nullptr));
@@ -160,6 +169,7 @@ int main()
 	// createBook();
 	// searchBookName("Dan");
 	// searchBookAuthor("Lo");
+	// searchBookType("Novel");
 	// getSpecificBookFromList(books.size() - 1);
 	// listAllBooks();
 

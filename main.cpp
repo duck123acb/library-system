@@ -146,7 +146,6 @@ void searchBookTitle(std::string search)
 	for (int i = 0; i < books.size(); i++)
 	{
 		if (books[i].title.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
-		else std::cout << "No books found with that Title\n";
 	}
 }
 
@@ -155,7 +154,6 @@ void searchBookAuthor(std::string search)
 	for (int i = 0; i < books.size(); i++)
 	{
 		if (books[i].author.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
-		else std::cout << "No books found with that Author\n";
 	}
 }
 
@@ -164,7 +162,6 @@ void searchBookGenre(std::string search)
 	for (int i = 0; i < books.size(); i++)
 	{
 		if (books[i].genre.find(search) != std::string::npos) std::cout << books[i].getProperties() << "\n";
-		else std::cout << "No books found with that/those Genre\n";
 	}
 }
 
@@ -185,7 +182,11 @@ int main()
 	 * getSpecificBookFromList(books.size() - 1);
 	 * listAllBooks();
 	**/
-	
+	loadBooks();
+	// randomizeAllIds();
+	// createBook();
+	searchBookAuthor("skep");
+	// listAllBooks();
 
 
 	return 0;

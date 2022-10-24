@@ -165,13 +165,15 @@ void searchBookGenre(std::string search)
 	}
 }
 
+// LOGIN/USER AUTH FUNCTIONS
+
 
 int main()
 {
     srand(time(nullptr));
 
 	/**
-	 * MAIN FUNCTIONS
+	 * MAIN LIBRARY FUNCTIONS
 	 * loadBooks();
 	 * randomizeAllIds();
 	 * writeBookFile();
